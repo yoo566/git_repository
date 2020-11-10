@@ -1,0 +1,81 @@
+{% extends 'base.html'%} 
+{% load static%} 
+{% block style %}
+<link rel="stylesheet" href="{% static 'posts/style.css'%}" type="text/css" />
+{% endblock %}
+{% block content %}
+<div class="container">
+  <!-- <h1>모든 게시물</h1> -->
+<!-- <ul>
+  <li>{{user.name}}</li>
+</ul> -->
+
+<!-- <h1>숫자 목록</h1>
+<ul>
+  <li>{{numbers}}</li>
+  <li>3번째 숫자 : {{numbers.2}}</li>
+</ul> -->
+<!-- <h1>숫자 for문</h1>
+<ul>
+  {% for x in numbers %}
+  <li>{{x}}</li>
+  {% endfor %}
+</ul> -->
+<!-- <h1>for 리스트</h1>
+<ul>
+  {% for y in posts%}
+  <li>author : {{y.author}} | body : {{y.body}}</li>
+  {% endfor%} -->
+<!-- 
+  <h1>Posts</h1>
+  <br> -->
+
+  {% if posts %}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>작성자</th>
+        <th>본문</th>
+        <th>게시일</th>
+        <th>상세</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <th>{{ post.id }}</th>
+        <td>{{ post.user.get_username }}</td>
+        <td>{{ post.body }}</td>
+        <td>{{ post.created_at }}</td>
+        <td><a href="{% url 'posts:detail' post.id %}">보기</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No Posts.</p>
+  {% endif %}
+  <br>
+</div>
+<div class = "">
+  <a href="{% url 'posts:new' %}">글쓰기</a>
+</div>
+{% endblock %}
+
+
+  <!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>첫번째 헤드라인</h1>
+    <ul>
+        <li>첫번째 목록</li>
+    </ul>
+</body>
+</html> -->
+</ul>
